@@ -1,0 +1,803 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Someone Special 💙</title>
+
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'DM Sans', sans-serif;
+    background: #071629;
+    color: #edf5ff;
+    min-height: 100vh;
+    padding: 30px 16px;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at 15% 20%, #174b75 0, transparent 35%),
+        radial-gradient(circle at 85% 80%, #12385b 0, transparent 35%);
+    z-index: -1;
+}
+
+.container {
+    max-width: 760px;
+    margin: auto;
+}
+
+.card {
+    background: rgba(12, 35, 59, 0.88);
+    border: 1px solid rgba(178, 215, 255, 0.18);
+    border-radius: 25px;
+    padding: 35px 28px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    backdrop-filter: blur(12px);
+}
+
+.small-label {
+    color: #9ecdf5;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin-bottom: 18px;
+}
+
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: clamp(34px, 7vw, 53px);
+    line-height: 1.2;
+    margin-bottom: 18px;
+}
+
+h2 {
+    font-size: 29px;
+    margin-bottom: 17px;
+    color: #d6eaff;
+}
+
+h3 {
+    font-size: 21px;
+    margin-bottom: 12px;
+    color: #c4e2ff;
+}
+
+p {
+    line-height: 1.9;
+    color: #c7d8e9;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+input {
+    width: 100%;
+    max-width: 310px;
+    padding: 15px;
+    margin: 20px 0 12px;
+    background: #102d49;
+    border: 1px solid #527da4;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #b8dcff;
+}
+
+button {
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.main-button {
+    background: linear-gradient(135deg, #b9dcff, #75aee0);
+    color: #09213a;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+.main-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(117,174,224,0.25);
+}
+
+#errorMessage {
+    color: #ffb5bd;
+    margin-top: 12px;
+}
+
+#birthdayContent {
+    display: none;
+}
+
+.welcome {
+    padding: 35px 10px 25px;
+}
+
+.welcome .subtitle {
+    max-width: 480px;
+    margin: auto;
+}
+
+.divider {
+    width: 65px;
+    height: 1px;
+    background: #82b8e7;
+    margin: 25px auto;
+    opacity: 0.7;
+}
+
+.menu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 13px;
+    max-width: 490px;
+    margin: 25px auto;
+}
+
+.menu-button {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    text-align: left;
+    width: 100%;
+    padding: 18px;
+    border-radius: 15px;
+    border: 1px solid rgba(180,215,250,0.2);
+    background: #102d49;
+    color: white;
+}
+
+.menu-button:hover {
+    background: #17436b;
+    transform: translateY(-2px);
+}
+
+.menu-icon {
+    font-size: 25px;
+}
+
+.menu-button strong {
+    display: block;
+    color: #e3f1ff;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.menu-button small {
+    color: #9fb9d1;
+    font-size: 12px;
+}
+
+.section {
+    display: none;
+    text-align: left;
+    margin-top: 30px;
+    padding: 28px;
+    background: rgba(17, 46, 74, 0.95);
+    border: 1px solid rgba(180,215,250,0.17);
+    border-radius: 20px;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.letter-content {
+    background: rgba(6, 24, 42, 0.55);
+    border-radius: 15px;
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.letter-content p {
+    font-size: 14px;
+    margin-bottom: 19px;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    color: #c6e3ff;
+    font-size: 19px;
+    margin-top: 25px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.photo {
+    background: #0a2037;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(180,215,250,0.2);
+}
+
+.photo:first-child {
+    grid-column: span 2;
+}
+
+.photo img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo:first-child img {
+    height: 280px;
+}
+
+.photo p {
+    padding: 12px;
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+}
+
+.music-box {
+    text-align: center;
+    background: #0a2037;
+    border-radius: 16px;
+    padding: 25px 15px;
+    margin-top: 20px;
+}
+
+.music-art {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #b9dcff, #315f8c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    box-shadow: 0 0 35px rgba(117,174,224,0.2);
+}
+
+audio {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.close-button {
+    display: block;
+    margin: 25px auto 0;
+    background: transparent;
+    color: #a9d3fa;
+    border: 1px solid #527da4;
+    border-radius: 25px;
+    padding: 10px 22px;
+}
+
+.close-button:hover {
+    background: #17436b;
+}
+
+#finalMessage {
+    display: none;
+    margin-top: 30px;
+    padding: 30px 20px;
+    text-align: center;
+    background: linear-gradient(145deg, #163d60, #0d2945);
+    border: 1px solid rgba(190,220,255,0.3);
+    border-radius: 20px;
+    animation: fadeIn 1s ease;
+}
+
+#finalMessage p {
+    max-width: 490px;
+    margin: 15px auto;
+}
+
+.footer {
+    text-align: center;
+    margin: 30px 0 10px;
+    color: #8caac7;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+@media(max-width: 550px) {
+    .card {
+        padding: 27px 17px;
+    }
+
+    .section {
+        padding: 20px 15px;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .photo:first-child {
+        grid-column: span 1;
+    }
+
+    .photo img,
+    .photo:first-child img {
+        height: 250px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- PASSWORD PAGE -->
+    <div class="card" id="passwordScreen">
+
+        <div class="small-label">A little surprise for you</div>
+
+        <h1>Something Special<br>Awaits You. <br>I hope u will appreciate it</h1>
+
+        <div class="divider"></div>
+
+        <p>
+            I made something for your special day.
+            It's not much, but I hope it reminds you
+            how important you are.
+        </p>
+
+        <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter your secret password"
+        >
+
+        <br>
+
+        <button class="main-button" onclick="unlockLetter()">
+            Open Your Surprise ✦
+        </button>
+
+        <p id="errorMessage"></p>
+
+    </div>
+
+
+    <!-- MAIN PAGE -->
+    <div class="card" id="birthdayContent">
+
+        <div class="welcome">
+
+            <div class="small-label">A day worth celebrating</div>
+
+            <h1>Happy Birthday,<br>Abay Bryl 💙</h1>
+
+            <div class="divider"></div>
+
+            <p class="subtitle">
+                I wish I could put into words just how much
+                you mean to me. So, instead, I made you this
+                little place filled with words, memories,
+                and a song.
+            </p>
+
+            <p>Take your time. There's no need to rush. ♡</p>
+
+        </div>
+
+
+        <!-- MENU -->
+        <div class="menu">
+
+            <button class="menu-button"
+                onclick="showSection('letterSection', 'letter')">
+
+                <span class="menu-icon">💌</span>
+
+                <span>
+                    <strong>A Letter From Our Heart</strong>
+                    <small>Some words we  want you to remember</small>
+                </span>
+
+            </button>
+
+
+            <button class="menu-button"
+                onclick="showSection('gallerySection', 'gallery')">
+
+                <span class="menu-icon">📷</span>
+
+                <span>
+                    <strong>moments nimo dawg</strong>
+                    <small>A few memories that mean so much</small>
+                </span>
+
+            </button>
+
+
+            <button class="menu-button"
+                onclick="showSection('musicSection', 'music')">
+
+                <span class="menu-icon">♫</span>
+
+                <span>
+                    <strong>Kanta man tingali ni</strong>
+                    <small>A song that reminds me of us</small>
+                </span>
+
+            </button>
+
+        </div>
+
+
+        <!-- LETTER -->
+        <div class="section" id="letterSection">
+
+            <div class="small-label">A message just for you</div>
+
+            <h2>If You Ever Forget...</h2>
+
+            <div class="letter-content">
+
+                <p>Happy Birthday Bryl. 💙</p>
+
+                <p>
+                    <h1>From: Jared</h1>
+                    happy birthday.
+                    i dont really know where we stand now,
+                    but i do know one thing, you were once someone very important in my life, 
+                    and that feeling didnt disappear just like that.
+                    i hope today you feel appreciated, loved, and at peace, 
+                    even if that peace doesnt come from me anymore. thank you for the memories, 
+                    the lessons, and even the pain, because all of it changed me into who i am today.
+                    i wish you growth, happiness, and a life that treats you kindly.
+                    and somewhere in my heart, i still hope you're okay.
+                    always.
+
+                </p>
+
+                <p>
+                    <h1>From: Drinsbayotz</h1>
+                    Happy birthday bryl, wish Nako para saimoha is good health, 
+                    and unta Dili maguba ang  friendship na gi 
+                    build nato satung mga barkada together.
+                    biskan asa mn ta ninyu malagpot still 
+                    magpadayun gihapon atung pagka amigo,
+                    unta ma enjoy nimo imong day! HAPPY HAPPY BIRTHDAY:>
+                </p>
+
+                <p>
+                    <h1>From: Byang</h1>
+                    hi ryl ! happy birthday bai hwhahwhahahw finally legal age to drink najud , 
+                    looking back before dili pa kaayo ta ingon nga kaila kay wajud ko nagdahom 
+                    nga magdugay unya mas magdeepen pa atong friendship .
+                    i am so thankful kaayo ryl to have you as my friend . 
+                    even though magsigi tag lalis saimong kagahig ulo ! 
+                    i wish you all the best in life ryl , 
+                    and may God bless you with good health
+                    and happiness all throughout your life . 
+                    happy birthday once again , gahig ulo !
+                </p>
+
+                <p>
+                    <h1>From: Mich</h1>
+                    Happy birthday, dawg! More birthdays, 
+                    blessings, and patience to come. 
+                    Thank you for being a good friend (sometimes 😜). 
+                    enjoy your day!
+                </p>
+
+                <p>
+                    <h1>From: Dayanskiee</h1>
+                    Helloooo, rylism! Happy birthday to youuuuu! I am really
+                    glad and happy na we became friends (nalang).
+                    May you continue living the life to the fullest,
+                    but with limits dinn, 
+                    achieve the dream that you've always dreamed of,
+                    and grab opportunities that may lead you to success. 
+                    Don't let fear hinder your potential because it could bring you 
+                    to anywhere. May we all graduate in Social Work by Gods' grace.
+                    MU-GRADUATE TA. Let's call it like that. And alsooooooo
+                    ayna sig pangyawa oy. 
+                    Happy birthday ulit!! Shat na ta, yohooooo!
+                </p>
+
+                <p>
+                    <h1>From: Bantoy</h1>
+                Happy birthday, to my be epep, ryl!🥳🫶
+                Ofc I start my cheka sa wla pata nag Kaila HAAHAHAHAHAHAHAHAHAH
+                Honestly, wala jud sa akong expectations nga magka-bff ta ryl,
+                 kay you are someone in the first day of class na something mysterious pero I'm wrong pala brooo! tf, 
+                apaka daldal mo pre! But it's okay, as 
+                a talkative person gusto jud ko permi cheka. And without further ado,
+                look at us now, from the person who look forward na mahimong maka cheka,  
+                nahimo na nuon tang bff. Funny how life works, no? Sometimes, the best people come into our lives unexpectedly,
+                and ikaw jud isa sa mga unexpected blessings nga thankful ko nga na-meet nako HAHAHAAHHAHA 
+                tiis tiis lang sa ka greed sa akong fuc*ng mouth brooooo
+                Btw, thank you for being someone 
+                I can laugh with and ka chekahan sa mga salida nako sa layp HAHAAHH katong mga random moments
+                that turn into a funny memories.  I hope you know nga I
+                genuinely appreciate you and our friendship more than words can explain beryyyy muchhhhg🥹
+                As you turn another year older, I hope life becomes kinder to you.
+                I hope you achieve the things you silently pray for, just like what we expect na unta sabay ta 
+                ninyo ug graduate holding the degree of BS Social Work, and not just that but also as an RSW huhu. 
+                Always remember nga naa ra ko diri to support you as your classmate and bff, just to listen to your rants,
+                and make more memories with you.
+                Happy birthday again, bff! Stay genuine, stay happy, and never forget how appreciated you are. 
+                I'm really glad nga nahimo tang friends. Love you, bro! Mabuhay ka hanggat gusto mowchh!!🫀
+                </p>
+
+                <p>
+                    <h1>From: Trishang</h1>
+                happy birthday ryl!! even if we're not that close pa,
+                im grateful to be part of our circle. 
+                wish you all the best in life and hope you have a great birthdayy!! 🥳
+                </p>
+
+                <div class="signature">
+                    Always wishing you the best, 💙
+                </div>
+
+            </div>
+
+            <button class="close-button"
+                onclick="closeSection('letterSection')">
+                Close Letter
+            </button>
+
+        </div>
+
+
+        <!-- GALLERY -->
+        <div class="section" id="gallerySection">
+
+            <div class="small-label">Little pieces of our story</div>
+
+            <h2>Memories Worth Keeping.</h2>
+
+            <p>
+                Some moments may seem ordinary when they happen,
+                but looking back, they become some of the
+                memories we treasure most.
+            </p>
+
+          
+<div class="gallery">
+
+    <div class="photo">
+        <img src="c:\Users\Jared Gayle\OneDrive\Desktop\Pics\picture1.jpg.jpg"
+             alt="kamo">
+        <p>A nawong ninyo ♡</p>
+    </div>
+
+    <div class="photo">
+        <img src="c:\Users\Jared Gayle\OneDrive\Desktop\Pics\picture2.jpg.jpg"
+             alt="dawg">
+        <p>imong nawong.</p>
+    </div>
+
+    <div class="photo">
+        <img src="c:\Users\Jared Gayle\OneDrive\Desktop\Pics\picture3.jpg.jpg"
+             alt="ikaw ni meng">
+        <p>gwapoha. 💙</p>
+    </div>
+
+</div>
+
+            </div>
+
+            <button class="close-button"
+                onclick="closeSection('gallerySection')">
+                Close Memories
+            </button>
+
+        </div>
+
+
+        <!-- MUSIC -->
+        <div class="section" id="musicSection">
+
+            <div class="small-label">Press play and take a moment</div>
+
+            <h2>A Song for You.</h2>
+
+            <p>
+                Some feelings are easier to express through music.
+                I hope this song makes your day a little more special.
+            </p>
+
+            <div class="music-box">
+
+                <div class="music-art">♫</div>
+
+                <h3>Daylight</h3>
+
+                <p>Taylor Swift</p>
+
+                <audio id="birthdaySong" controls preload="metadata">
+                    <source src="c:\Users\Jared Gayle\Downloads\Taylor Swift - Daylight (Lyric Video).mp3" type="audio/mpeg">
+                    Your browser does not support audio.
+                </audio>
+
+                <p id="musicMessage">
+                    Press play whenever you're ready. ♡
+                </p>
+
+            </div>
+
+            <button class="close-button"
+                onclick="closeSection('musicSection')">
+                Close Music
+            </button>
+
+        </div>
+
+
+        <!-- FINAL MESSAGE -->
+        <div id="finalMessage">
+
+            <div class="small-label">One last thing...</div>
+
+            <h2>Before You Go. 💙</h2>
+
+            <div class="divider"></div>
+
+            <p>
+                I hope you felt even a little of how much
+                you are appreciated through this small surprise.
+            </p>
+
+            <p>
+                This website may only be made of words, pictures,
+                and music, but every part of it was chosen with
+                care. I hope you keep the memories close and
+                remember that you deserve happiness, today
+                and every day after.
+            </p>
+
+            <h3>Thank you for being you.</h3>
+
+            <p>Happy Birthday, once again. ♡</p>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer">
+        MADE WITH CARE · JUST FOR YOU
+    </div>
+
+</div>
+
+
+<script>
+
+// PASSWORD
+const correctPassword = "110407";
+
+function unlockLetter() {
+
+    const password =
+        document.getElementById("passwordInput").value;
+
+    if (password === correctPassword) {
+
+        document.getElementById("passwordScreen").style.display = "none";
+
+        document.getElementById("birthdayContent").style.display = "block";
+
+    } else {
+
+        document.getElementById("errorMessage").textContent =
+            "That's not the password. Try again. 💙";
+
+    }
+}
+
+
+// ENTER KEY
+document.getElementById("passwordInput")
+.addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        unlockLetter();
+    }
+
+});
+
+
+// TRACK OPENED SECTIONS
+const openedSections = new Set();
+
+function showSection(sectionId, sectionName) {
+
+    const sections = document.querySelectorAll(".section");
+
+    sections.forEach(function(section) {
+        section.style.display = "none";
+    });
+
+    document.getElementById(sectionId).style.display = "block";
+
+    openedSections.add(sectionName);
+
+    if (
+        openedSections.has("letter") &&
+        openedSections.has("gallery") &&
+        openedSections.has("music")
+    ) {
+        document.getElementById("finalMessage").style.display = "block";
+    }
+
+    document.getElementById(sectionId).scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+}
+
+
+// CLOSE SECTION
+function closeSection(sectionId) {
+
+    document.getElementById(sectionId).style.display = "none";
+
+}
+
+
+// MUSIC ERROR
+const song = document.getElementById("birthdaySong");
+
+song.addEventListener("error", function() {
+
+    document.getElementById("musicMessage").textContent =
+        "The song could not load. Please check that music/daylight.mp3 exists.";
+
+});
+
+song.addEventListener("canplay", function() {
+
+    document.getElementById("musicMessage").textContent =
+        "Your song is ready. Enjoy listening. 💙";
+
+});
+
+</script>
+
+</body>
+</html>
